@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive mini-game teaching classical conditioning.">
+  <title>Classical Conditioning — by Eman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="site-header">
+      <div class="eyebrow">A little psychology experiment</div>
+      <h1>Classical Conditioning</h1>
+      <p class="byline">by Eman</p>
+    </header>
+
+    <section class="game-shell" aria-label="Classical conditioning game">
+      <div class="side-controls left-controls">
+        <button class="action-button mocha" id="coffeeBtn" aria-label="Give Eman an iced dark mocha" title="Iced dark mocha">
+          <span class="button-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><path d="M19 13h27l-3 39H22z" fill="#f7f0e4" stroke="#67442f" stroke-width="2.5" stroke-linejoin="round"/><path d="M21 25h23l-2 22H23z" fill="#9a6548"/><path d="M25 18h15" stroke="#67442f" stroke-width="2.5" stroke-linecap="round"/><path d="M31 9l-3 10M38 8l-2 11" stroke="#67442f" stroke-width="2.5" stroke-linecap="round"/><path d="M46 20c8-1 8 12-2 12" fill="none" stroke="#67442f" stroke-width="2.5"/><circle cx="27" cy="30" r="2" fill="#f3dfbd"/><circle cx="36" cy="36" r="2" fill="#f3dfbd"/></svg>
+          </span><span class="button-label">Iced mocha</span>
+        </button>
+        <button class="action-button illness" id="illnessBtn" aria-label="Illness" title="Illness">
+          <span class="button-art" aria-hidden="true">☣</span><span class="button-label">Illness</span>
+        </button>
+      </div>
+
+      <div class="stage-wrap">
+        <div class="campus-doodle" aria-hidden="true">
+          <svg viewBox="0 0 180 155">
+            <path d="M30 139h120M48 139V70h84v69M58 70V48h64v22M68 48V29h44v19M77 29V14h26v15M86 14V5h8v9" />
+            <path d="M82 5h16M84 18h12M87 34h6M75 54h30M56 82h15v18H56zM109 82h15v18h-15zM82 106h16v33H82z" />
+            <circle cx="90" cy="40" r="8"/><path d="M90 32v8l5 3"/>
+          </svg>
+          <span>THE UNIVERSITY OF JORDAN</span>
+        </div>
+        <div class="stage-topline">
+          <span class="location-pill"><span class="tiny-dot"></span> Campus life</span>
+          <span class="day-count" id="dayCount">Day 1</span>
+        </div>
+        <div class="scene" id="scene" aria-live="polite"></div>
+        <div class="scene-caption" id="caption">Meet Eman. She loves her iced dark mocha.</div>
+        <div class="toast" id="toast" role="status"></div>
+      </div>
+
+      <div class="side-controls right-controls">
+        <button class="action-button consult" id="consultBtn" aria-label="Ask the professor" title="Ask the professor">
+          <span class="button-art" aria-hidden="true">?</span><span class="button-label">Ask</span>
+        </button>
+        <button class="action-button friend" id="friendBtn" aria-label="Sit with one friend" title="Sit with one friend">
+          <span class="button-art" aria-hidden="true">♡</span><span class="button-label">One friend</span>
+        </button>
+        <button class="action-button group" id="groupBtn" aria-label="Sit with the group" title="Sit with friends">
+          <span class="button-art" aria-hidden="true">♧</span><span class="button-label">Friends</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="progress-panel">
+      <div class="progress-heading">
+        <div><span class="section-kicker">Your experiment</span><h2>What is happening?</h2></div>
+        <button class="reset-button" id="resetBtn">↻ Restart</button>
+      </div>
+      <p id="progressText">Try the iced mocha first. Then use the illness button to continue the story.</p>
+      <div class="steps" aria-label="Experiment progress">
+        <span class="step active" id="step1">1. Before</span>
+        <span class="step" id="step2">2. Pairing</span>
+        <span class="step" id="step3">3. After</span>
+        <span class="step" id="step4">4. Extinction</span>
+      </div>
+    </section>
+    <footer>Made for learning • Classical conditioning in everyday life</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
