@@ -50,45 +50,45 @@ function cupOnly(x,y,s=1) {
  return `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-17 -27h34l-5 56h-24z" fill="#fffaf0" stroke="#67442f" stroke-width="2.5"/><path d="M-15 -9h30l-4 33h-22z" fill="#956344"/><path d="M-5 -37l-5 13M5 -37l-3 13" stroke="#67442f" stroke-width="2.5" stroke-linecap="round"/><path d="M17 -20q16 -2 12 13q-2 8 -14 7" fill="none" stroke="#67442f" stroke-width="2.5"/></g>`;
 }
 function friendPerson(x,y,scale=0.8,color="#8c6e9e",style=0) {
- const hair = ["#49352e","#674331","#302b2a","#76513b"][style%4];
- const skin = ["#e8b18d","#d99b78","#f0c5a1","#c98768"][style%4];
- const styles = [
-  `<path d="M-35 8Q-42 -34 -5 -40Q32 -42 37 -5L31 26L34 66Q18 78 12 58L17 13Q0 4 -15 13L-23 62Q-40 69 -38 43Z" fill="${hair}"/><path d="M-34 -7Q-16 -29 4 -26Q24 -24 35 -5Q12 -14 -3 -8Q-20 0 -34 -7Z" fill="${hair}"/>`,
-  `<path d="M-36 7Q-42 -36 0 -41Q40 -35 36 8L29 58Q16 73 10 53L15 12Q0 2 -16 12L-13 58Q-29 71 -36 52Z" fill="${hair}"/><path d="M-35 -8Q-20 -31 1 -28Q22 -26 35 -7Q14 -14 -1 -8Q-18 -1 -35 -8Z" fill="${hair}"/>`,
-  `<path d="M-36 5Q-40 -38 0 -41Q40 -38 36 5L27 54Q15 69 9 51L14 10Q0 2 -14 10L-25 54Q-38 66 -36 42Z" fill="${hair}"/><path d="M-35 -8Q-19 -30 0 -28Q20 -29 35 -8Q14 -14 0 -9Q-18 -2 -35 -8Z" fill="${hair}"/>`,
-  `<path d="M-36 8Q-42 -35 -4 -40Q34 -40 37 -4L30 60Q15 75 9 55L15 12Q-1 3 -17 13L-24 61Q-40 68 -38 43Z" fill="${hair}"/><path d="M-35 -7Q-17 -30 5 -27Q25 -24 35 -4Q13 -13 -2 -8Q-20 0 -35 -7Z" fill="${hair}"/>`
+ const hair = ["#65452f","#49352e","#302727","#76513b"][style%4];
+ const skin = ["#e8b58f","#d99b78","#f0c5a1","#c98768"][style%4];
+ const hairStyle = [
+   `<path d="M-35 18Q-44 -27 -5 -31Q34 -35 39 5Q25 -7 15 -22Q-2 -5 -31 -5Z" fill="${hair}"/><path d="M-35 0Q-47 28 -35 66Q-28 82 -22 74L-25 25M35 0Q47 28 35 66Q28 82 22 74L25 25" fill="${hair}"/>`,
+   `<path d="M-35 18Q-42 -30 0 -34Q38 -30 37 8Q15 -12 -2 -8Q-20 -4 -35 18Z" fill="${hair}"/><path d="M-35 2Q-42 35 -29 69L-19 73L-24 17M35 2Q42 35 29 69L19 73L24 17" fill="${hair}"/>`,
+   `<path d="M-36 14Q-43 -30 -4 -34Q35 -35 38 8Q18 -12 2 -12Q-17 -7 -36 14Z" fill="${hair}"/><path d="M-35 0Q-44 30 -34 67L-23 76L-25 20M35 0Q44 30 34 67L23 76L25 20" fill="${hair}"/>`,
+   `<path d="M-35 18Q-42 -30 0 -33Q40 -29 38 9Q18 -13 0 -12Q-18 -6 -35 18Z" fill="${hair}"/><path d="M-35 0Q-44 30 -31 68L-21 72L-25 20M35 0Q44 30 31 68L21 72L25 20" fill="${hair}"/>`
  ][style%4];
  return `<g transform="translate(${x} ${y}) scale(${scale})">
-  <path d="M-42 78Q-49 105 -44 165H44Q49 105 42 78Q22 64 0 65Q-22 64 -42 78Z" fill="${color}" stroke="#57483e" stroke-width="2"/>
-  <path d="M-13 69L0 91L13 69" fill="#fffdf7" stroke="#bdb6ae" stroke-width="1.5"/>
-  <path d="M-9 54H9V76Q0 84 -9 76Z" fill="${skin}"/>
-  <ellipse cx="0" cy="17" rx="43" ry="49" fill="${hair}"/><ellipse cx="0" cy="20" rx="34" ry="41" fill="${skin}"/>
-  ${styles}
-  <path d="M-20 -1Q-13 -7 -6 -1M7 -1Q14 -7 21 -1" fill="none" stroke="#4c342c" stroke-width="2.8" stroke-linecap="round"/>
-  <ellipse cx="-12" cy="5" rx="3.5" ry="4.5" fill="#392d29"/><ellipse cx="13" cy="5" rx="3.5" ry="4.5" fill="#392d29"/>
-  <path d="M0 10Q-3 18 1 20" fill="none" stroke="#bd856c" stroke-width="1.6" stroke-linecap="round"/>
-  <path d="M-9 28Q0 36 10 28" fill="none" stroke="#9c5148" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="-22" cy="20" rx="7" ry="4" fill="#d98278" opacity=".28"/><ellipse cx="22" cy="20" rx="7" ry="4" fill="#d98278" opacity=".28"/>
+   <path d="M-38 54Q-52 76 -47 145H47Q52 76 38 54Q0 35 -38 54Z" fill="${color}" stroke="#57483e" stroke-width="2"/>
+   <path d="M-12 48L0 70L12 48" fill="#fffdf7" stroke="#bdb6ae" stroke-width="1.5"/>
+   <path d="M-8 38H8V57Q0 65 -8 57Z" fill="${skin}"/>
+   <ellipse cx="0" cy="18" rx="43" ry="49" fill="${hair}"/>
+   <ellipse cx="0" cy="21" rx="34" ry="41" fill="${skin}"/>
+   ${hairStyle}
+   <ellipse cx="-12" cy="0" rx="3.5" ry="4.5" fill="#4c342c"/><ellipse cx="13" cy="0" rx="3.5" ry="4.5" fill="#4c342c"/>
+   <path d="M-8 19Q0 26 9 19" stroke="#9c5148" stroke-width="3" fill="none" stroke-linecap="round"/>
+   <path d="M0 7Q-3 14 1 16" stroke="#bd856c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+   <ellipse cx="-20" cy="13" rx="7" ry="4" fill="#d77b72" opacity=".25"/><ellipse cx="20" cy="13" rx="7" ry="4" fill="#d77b72" opacity=".25"/>
  </g>`;
 }
 function doctorPerson(x,y,scale=1) {
  return `<g transform="translate(${x} ${y}) scale(${scale})">
-  <path d="M-65 83Q-76 110 -72 190H72Q76 110 65 83Q39 65 20 65L0 91L-20 65Q-42 66 -65 83Z" fill="#fffefa" stroke="#b8b2a9" stroke-width="2.4"/>
-  <path d="M-20 67L0 95L20 67L12 190H-12Z" fill="#f1eee8" stroke="#c9c2b8" stroke-width="1.5"/>
-  <path d="M-20 68L0 94L-13 110L-30 78M20 68L0 94L13 110L30 78" fill="#fff" stroke="#c9c2b8" stroke-width="1.5"/>
-  <path d="M-13 49H13V77Q0 88 -13 77Z" fill="#d99f7d"/>
-  <!-- loose, shoulder-length hair; no head covering -->
-  <path d="M-43 2Q-52 -48 -8 -58Q35 -63 46 -20Q52 12 42 73Q31 88 22 70L25 24L-25 24L-24 72Q-39 86 -48 67Z" fill="#5b4032" stroke="#493329" stroke-width="1.8"/>
-  <path d="M-29 -1Q-31 -39 0 -43Q31 -39 29 -1L25 28Q17 52 0 55Q-17 52 -25 28Z" fill="#e8b18e" stroke="#b98268" stroke-width="1.2"/>
-  <path d="M-30 -8Q-34 -42 0 -49Q32 -47 31 -10Q18 -22 5 -22Q-13 -13 -30 -8Z" fill="#5b4032"/>
-  <path d="M-20 4Q-14 -1 -8 4M8 4Q14 -1 20 4" fill="none" stroke="#5b4032" stroke-width="2.7" stroke-linecap="round"/>
-  <ellipse cx="-13" cy="11" rx="3.2" ry="4" fill="#3b302b"/><ellipse cx="13" cy="11" rx="3.2" ry="4" fill="#3b302b"/>
-  <path d="M0 15Q-3 23 1 24" fill="none" stroke="#bd856c" stroke-width="1.5"/>
-  <path d="M-8 34Q0 42 9 33" fill="none" stroke="#984f4b" stroke-width="2.8" stroke-linecap="round"/>
-  <ellipse cx="-22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/><ellipse cx="22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/>
-  <path d="M-22 92V111Q-22 131 0 131Q22 131 22 111V92" fill="none" stroke="#66777a" stroke-width="3.2" stroke-linecap="round"/>
-  <path d="M0 131V145" stroke="#66777a" stroke-width="3.2"/><circle cx="0" cy="150" r="7" fill="#b9c4c2" stroke="#66777a" stroke-width="2"/>
-  <rect x="34" y="104" width="19" height="25" rx="3" fill="#e8eee4" stroke="#9aaa92"/><path d="M39 111h9M39 117h9" stroke="#80927a" stroke-width="1.5"/>
+   <path d="M-65 83Q-77 110 -72 190H72Q77 110 65 83Q39 65 20 65L0 91L-20 65Q-42 66 -65 83Z" fill="#fffefa" stroke="#b8b2a9" stroke-width="2.4"/>
+   <path d="M-20 67L0 95L20 67L12 190H-12Z" fill="#f1eee8" stroke="#c9c2b8" stroke-width="1.5"/>
+   <path d="M-20 68L0 94L-13 110L-30 78M20 68L0 94L13 110L30 78" fill="#fff" stroke="#c9c2b8" stroke-width="1.5"/>
+   <path d="M-13 49H13V77Q0 88 -13 77Z" fill="#e8b58f"/>
+   <path d="M-43 5Q-52 -48 -8 -58Q35 -63 46 -20Q52 12 42 73Q31 88 22 70L25 24L-25 24L-24 72Q-39 86 -48 67Z" fill="#65452f" stroke="#57483e" stroke-width="1.8"/>
+   <ellipse cx="0" cy="18" rx="43" ry="49" fill="#65452f"/>
+   <path d="M-29 -1Q-31 -39 0 -43Q31 -39 29 -1L25 28Q17 52 0 55Q-17 52 -25 28Z" fill="#e8b58f" stroke="#b98268" stroke-width="1.2"/>
+   <path d="M-30 -6Q-35 -42 0 -49Q35 -42 30 -6L22 -19Q0 -7 -22 -19Z" fill="#65452f"/>
+   <path d="M-20 4Q-14 -1 -8 4M8 4Q14 -1 20 4" fill="none" stroke="#4c342c" stroke-width="2.7" stroke-linecap="round"/>
+   <ellipse cx="-13" cy="11" rx="3.5" ry="4.5" fill="#4c342c"/><ellipse cx="13" cy="11" rx="3.5" ry="4.5" fill="#4c342c"/>
+   <path d="M0 15Q-3 23 1 24" fill="none" stroke="#bd856c" stroke-width="1.5"/>
+   <path d="M-8 34Q0 42 9 33" fill="none" stroke="#9c5148" stroke-width="3" stroke-linecap="round"/>
+   <ellipse cx="-22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/><ellipse cx="22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/>
+   <path d="M-22 92V111Q-22 131 0 131Q22 131 22 111V92" fill="none" stroke="#66777a" stroke-width="3.2" stroke-linecap="round"/>
+   <path d="M0 131V145" stroke="#66777a" stroke-width="3.2"/><circle cx="0" cy="150" r="7" fill="#b9c4c2" stroke="#66777a" stroke-width="2"/>
+   <rect x="34" y="104" width="19" height="25" rx="3" fill="#e8eee4" stroke="#9aaa92"/><path d="M39 111h9M39 117h9" stroke="#80927a" stroke-width="1.5"/>
  </g>`;
 }
 function showScene(kind, extra={}) {
@@ -118,7 +118,7 @@ function showScene(kind, extra={}) {
     caption.textContent = `Safe experience ${extra.day||1} of 3: Eman and her friends enjoy their drinks together.`;
   }
   if (kind === "consult") {
-    svg = `<svg viewBox="0 0 650 370" role="img" aria-label="Eman speaking with a friendly doctor">${person({x:165,y:80,scale:1.02,mood:"happy",bag:false})}${doctorPerson(435,88,1.03)}<path d="M245 140Q286 112 325 133" stroke="#a9a092" stroke-width="2" fill="none" stroke-dasharray="4 5"/><text x="295" y="113" fill="#8a765d" font-size="15">?</text></svg>`;
+    svg = `<svg viewBox="0 0 650 370" role="img" aria-label="Eman speaking with a friendly female doctor">${person({x:165,y:80,scale:1.02,mood:"happy",bag:false})}${doctorPerson(435,88,1.03)}<path d="M245 140Q286 112 325 133" stroke="#a9a092" stroke-width="2" fill="none" stroke-dasharray="4 5"/><text x="295" y="113" fill="#8a765d" font-size="15">?</text></svg>`;
     caption.textContent = "The doctor explains how Eman's brain connected the mocha with feeling ill.";
   }
   scene.innerHTML = svg;
