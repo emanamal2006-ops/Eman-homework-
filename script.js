@@ -52,26 +52,28 @@ function cupOnly(x,y,s=1) {
 function friendPerson(x,y,scale=0.8,color="#8c6e9e",style=0) {
   const hairColors=["#49342d","#6a4935","#302a2a","#805b43"];
   const skins=["#e8b795","#dca27f","#f0c6a3","#c98f70"];
-  const hair=hairColors[style%hairColors.length], skin=skins[style%skins.length];
-  const hairShape = style%4===0
-    ? `<path d="M-34 5Q-43 -37 0 -40Q42 -37 35 8L31 49Q24 66 16 56L19 8Q0 -8 -22 8L-20 55Q-31 66 -36 46Z" fill="${hair}"/>`
-    : style%4===1
-    ? `<path d="M-35 4Q-42 -38 0 -40Q42 -37 35 8L31 49Q24 66 16 56L19 8Q0 -8 -22 8L-20 55Q-31 66 -36 46Z" fill="${hair}"/><path d="M-25 -19Q-4 -43 18 -23Q6 -12 -14 -12Z" fill="#8a6247" opacity=".45"/>`
-    : style%4===2
-    ? `<path d="M-36 8Q-43 -39 0 -40Q42 -37 36 8L34 49Q23 65 17 53L19 8Q0 -7 -22 8L-20 54Q-31 65 -37 45Z" fill="${hair}"/><path d="M-24 -19Q0 -35 23 -17" fill="none" stroke="#a27b5d" stroke-width="4"/>`
-    : `<path d="M-36 7Q-43 -38 0 -40Q42 -37 36 8L33 48Q24 65 17 54L19 8Q0 -8 -22 8L-20 54Q-31 65 -37 45Z" fill="${hair}"/><path d="M-35 -4Q-23 -26 -9 -22" fill="none" stroke="#a27b5d" stroke-width="3"/>`;
-  const face = `<ellipse cy="5" rx="29" ry="35" fill="${skin}" stroke="#765344" stroke-width="1.4"/>
-    <path d="M-19 -3Q-12 -9 -5 -3M6 -3Q13 -9 20 -3" fill="none" stroke="#51392f" stroke-width="2.2" stroke-linecap="round"/>
-    <ellipse cx="-12" cy="3" rx="3.2" ry="4.3" fill="#fff"/><ellipse cx="12" cy="3" rx="3.2" ry="4.3" fill="#fff"/>
-    <circle cx="-12" cy="4" r="2.1" fill="#49342c"/><circle cx="12" cy="4" r="2.1" fill="#49342c"/>
+  const hair=hairColors[style%4], skin=skins[style%4];
+  const hairstyles=[
+    `<path d="M-34 8Q-45 -39 0 -42Q43 -39 35 10L34 53Q24 69 16 55L18 9Q0 -8 -21 8L-19 55Q-30 68 -37 48Z" fill="${hair}"/><path d="M-25 -18Q-12 -39 7 -31Q-5 -16 -24 -7Z" fill="#a47b5e" opacity=".5"/>`,
+    `<path d="M-36 7Q-44 -39 0 -41Q44 -39 36 8L31 55Q23 67 16 54L18 9Q0 -7 -22 8L-20 55Q-31 67 -37 48Z" fill="${hair}"/><path d="M-35 -15Q-12 -48 18 -29Q7 -12 -8 -9Q-22 -7 -35 2Z" fill="${hair}"/>`,
+    `<path d="M-35 7Q-42 -40 0 -42Q42 -40 35 8L30 53Q23 67 15 54L18 9Q0 -9 -21 8L-19 54Q-30 67 -36 48Z" fill="${hair}"/><path d="M-25 -22Q0 -39 25 -20" fill="none" stroke="#9a7255" stroke-width="5"/>`,
+    `<path d="M-36 8Q-43 -39 0 -41Q43 -39 36 8L33 55Q24 68 16 54L18 8Q0 -8 -22 8L-20 55Q-31 67 -37 48Z" fill="${hair}"/><path d="M-34 -3Q-25 -29 -5 -28Q8 -27 16 -17" fill="none" stroke="#b18a69" stroke-width="4"/>`
+  ];
+  const face = `<ellipse cy="5" rx="28" ry="34" fill="${skin}" stroke="#765344" stroke-width="1.35"/>
+    <path d="M-20 -5Q-13 -11 -5 -6M6 -6Q14 -11 21 -4" fill="none" stroke="#51392f" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M-18 1Q-12 -3 -7 1M7 1Q13 -3 18 1" fill="none" stroke="#6a493b" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="-12" cy="4" rx="3.5" ry="4.5" fill="#fff"/><ellipse cx="12" cy="4" rx="3.5" ry="4.5" fill="#fff"/>
+    <circle cx="-12" cy="4" r="2.2" fill="#49342c"/><circle cx="12" cy="4" r="2.2" fill="#49342c"/>
     <path d="M0 8Q-3 14 1 15" fill="none" stroke="#b77c68" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M-8 22Q0 29 9 21" fill="none" stroke="#98554a" stroke-width="2.5" stroke-linecap="round"/>
-    <ellipse cx="-21" cy="15" rx="5" ry="3" fill="#d98e82" opacity=".45"/><ellipse cx="21" cy="15" rx="5" ry="3" fill="#d98e82" opacity=".45"/>`;
+    <path d="M-9 22Q0 31 10 21" fill="none" stroke="#98554a" stroke-width="2.7" stroke-linecap="round"/>
+    <ellipse cx="-21" cy="15" rx="5.5" ry="3.5" fill="#d98e82" opacity=".48"/><ellipse cx="21" cy="15" rx="5.5" ry="3.5" fill="#d98e82" opacity=".48"/>`;
   return `<g transform="translate(${x} ${y}) scale(${scale})">
-    <path d="M-34 53Q-45 73 -41 132H41Q45 73 34 53Q0 35 -34 53Z" fill="${color}" stroke="#594b49" stroke-width="2"/>
-    <path d="M-10 47L0 62L10 47" fill="#fffaf2" stroke="#d8cbbb" stroke-width="1.2"/>
-    ${hairShape}${face}
-    <circle cx="-31" cy="19" r="3" fill="#d3ad69"/><circle cx="31" cy="19" r="3" fill="#d3ad69"/>
+    <path d="M-36 54Q-48 76 -43 137H43Q48 76 36 54Q0 35 -36 54Z" fill="${color}" stroke="#594b49" stroke-width="2"/>
+    <path d="M-11 48L0 64L11 48" fill="#fffaf2" stroke="#d8cbbb" stroke-width="1.3"/>
+    ${hairstyles[style%4]}${face}
+    <path d="M-31 19Q-36 23 -33 29M31 19Q36 23 33 29" fill="none" stroke="${hair}" stroke-width="3"/>
+    <circle cx="-31" cy="19" r="3.5" fill="#d3ad69"/><circle cx="31" cy="19" r="3.5" fill="#d3ad69"/>
+    <path d="M-23 60Q-18 75 -11 79M23 60Q18 75 11 79" stroke="#ffffff" stroke-opacity=".35" stroke-width="2" fill="none"/>
   </g>`;
 }
 function showScene(kind, extra={}) {
@@ -104,29 +106,29 @@ function showScene(kind, extra={}) {
     svg = `<svg viewBox="0 0 650 370" role="img" aria-label="Eman speaking with a friendly hijab-wearing doctor">
       ${person({x:160,y:80,scale:1.02,mood:"happy",bag:false})}
       <g transform="translate(425 78)">
-        <!-- shoulders and white coat -->
-        <path d="M-61 91Q-75 112 -70 190H70Q75 112 61 91Q35 70 0 72Q-35 70 -61 91Z" fill="#fffefa" stroke="#8c8982" stroke-width="2.2"/>
-        <path d="M-28 82L0 121L28 82L17 190H-17Z" fill="#dce8e8" stroke="#aab8b5" stroke-width="1.5"/>
-        <path d="M-28 84L-8 113L-22 131L-42 92M28 84L8 113L22 131L42 92" fill="#fff" stroke="#c8c6bf" stroke-width="1.5"/>
-        <!-- neck and face -->
-        <rect x="-12" y="62" width="24" height="24" rx="8" fill="#dca987"/>
-        <ellipse cx="0" cy="18" rx="31" ry="39" fill="#e8b895" stroke="#9b715c" stroke-width="1.5"/>
-        <!-- hijab framing the face -->
-        <path d="M-37 18Q-48 -40 -3 -49Q43 -48 38 17L34 83Q22 105 0 111Q-23 104 -35 82L-34 48Q-47 32 -37 18Z" fill="#758b83" stroke="#536c64" stroke-width="2.4"/>
-        <path d="M-29 11Q-32 -30 0 -35Q31 -31 29 11Q25 43 0 54Q-25 43 -29 11Z" fill="#e8b895" stroke="#9b715c" stroke-width="1.2"/>
-        <!-- calm, kind facial expression -->
+        <!-- tailored white coat and blouse -->
+        <path d="M-64 91Q-82 112 -76 195H76Q82 112 64 91Q37 70 0 72Q-37 70 -64 91Z" fill="#fffefa" stroke="#aaa49a" stroke-width="2.1"/>
+        <path d="M-29 82L0 119L29 82L17 195H-17Z" fill="#e7ece8" stroke="#c3ccc5" stroke-width="1.4"/>
+        <path d="M-29 83L-8 113L-24 132L-44 94M29 83L8 113L24 132L44 94" fill="#fff" stroke="#d2d0c9" stroke-width="1.5"/>
+        <!-- neck -->
+        <rect x="-12" y="61" width="24" height="27" rx="8" fill="#dca987"/>
+        <!-- hijab silhouette behind face -->
+        <path d="M-42 21Q-53 -43 -4 -54Q45 -52 43 20L42 83Q30 112 0 119Q-30 111 -42 83Z" fill="#71877f" stroke="#536b63" stroke-width="2.2"/>
+        <!-- face framed naturally by scarf -->
+        <path d="M-29 10Q-31 -30 0 -34Q31 -30 29 10Q27 44 0 57Q-27 44 -29 10Z" fill="#e8b895" stroke="#9b715c" stroke-width="1.3"/>
+        <path d="M-30 7Q-35 -23 -14 -40Q0 -48 17 -37Q30 -26 30 5Q20 -10 12 -19Q-3 -6 -26 -9Z" fill="#71877f"/>
         <path d="M-19 5Q-12 0 -5 5M6 5Q13 0 20 5" fill="none" stroke="#5a4035" stroke-width="2.4" stroke-linecap="round"/>
-        <ellipse cx="-12" cy="12" rx="3.2" ry="4.2" fill="#fff"/><ellipse cx="12" cy="12" rx="3.2" ry="4.2" fill="#fff"/>
-        <circle cx="-12" cy="12" r="2" fill="#49342c"/><circle cx="12" cy="12" r="2" fill="#49342c"/>
+        <ellipse cx="-12" cy="12" rx="3.5" ry="4.3" fill="#fff"/><ellipse cx="12" cy="12" rx="3.5" ry="4.3" fill="#fff"/>
+        <circle cx="-12" cy="12" r="2.1" fill="#49342c"/><circle cx="12" cy="12" r="2.1" fill="#49342c"/>
         <path d="M0 17Q-3 23 1 24" fill="none" stroke="#b77c68" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M-9 34Q0 41 9 34" fill="none" stroke="#98554a" stroke-width="2.4" stroke-linecap="round"/>
-        <ellipse cx="-22" cy="25" rx="5" ry="3" fill="#d98e82" opacity=".42"/><ellipse cx="22" cy="25" rx="5" ry="3" fill="#d98e82" opacity=".42"/>
-        <!-- stethoscope -->
-        <path d="M-29 91Q-35 132 -11 137Q0 139 11 137Q35 132 29 91" fill="none" stroke="#718b89" stroke-width="3.5" stroke-linecap="round"/>
-        <circle cx="0" cy="140" r="7" fill="#d5d9d5" stroke="#718b89" stroke-width="2.5"/>
-        <!-- doctor badge -->
-        <rect x="39" y="111" width="18" height="25" rx="3" fill="#e9eee9" stroke="#9aa69d"/>
-        <path d="M48 117v12M42 123h12" stroke="#7d9789" stroke-width="2" stroke-linecap="round"/>
+        <path d="M-9 34Q0 42 10 34" fill="none" stroke="#98554a" stroke-width="2.5" stroke-linecap="round"/>
+        <ellipse cx="-22" cy="25" rx="5" ry="3" fill="#d98e82" opacity=".4"/><ellipse cx="22" cy="25" rx="5" ry="3" fill="#d98e82" opacity=".4"/>
+        <!-- scarf drape, stethoscope and ID -->
+        <path d="M-37 48Q-42 84 -27 112L-10 129L-18 91L-27 55M37 48Q42 84 27 112L10 129L18 91L27 55" fill="#71877f" stroke="#536b63" stroke-width="1.6"/>
+        <path d="M-29 94Q-35 137 -11 142Q0 145 11 142Q35 137 29 94" fill="none" stroke="#718b89" stroke-width="3.2" stroke-linecap="round"/>
+        <circle cx="0" cy="145" r="7" fill="#d5d9d5" stroke="#718b89" stroke-width="2.3"/>
+        <rect x="42" y="112" width="17" height="24" rx="3" fill="#e9eee9" stroke="#9aa69d"/>
+        <path d="M50.5 117v13M44 123.5h13" stroke="#7d9789" stroke-width="1.8" stroke-linecap="round"/>
       </g>
       <path d="M240 135Q275 108 310 130" stroke="#a9a092" stroke-width="2" fill="none" stroke-dasharray="4 5"/><text x="290" y="115" fill="#8a765d" font-size="15">?</text>
     </svg>`;
