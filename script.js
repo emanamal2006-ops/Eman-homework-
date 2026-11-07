@@ -52,52 +52,45 @@ function cupOnly(x,y,s=1) {
 function friendPerson(x,y,scale=0.8,color="#8c6e9e",style=0) {
  const hair = ["#49352e","#674331","#302b2a","#76513b"][style%4];
  const skin = ["#e8b18d","#d99b78","#f0c5a1","#c98768"][style%4];
- const fringe = [
-   `<path d="M-34 5Q-42 -39 -4 -42Q34 -42 37 -5Q22 -20 9 -21Q-8 -7 -31 -11Z" fill="${hair}"/><path d="M-34 0Q-44 34 -30 58L-22 50L-25 13M34 0Q43 32 30 58L22 50L25 13" fill="${hair}"/>`,
-   `<path d="M-35 2Q-37 -40 0 -41Q38 -38 35 5L24 -11Q4 -18 -3 -5Q-17 -16 -28 -8Z" fill="${hair}"/><path d="M-33 0Q-47 36 -27 65L-18 56L-24 12M33 0Q45 36 27 65L18 56L24 12" fill="${hair}"/>`,
-   `<path d="M-35 0Q-42 -44 0 -42Q42 -44 35 4Q22 -10 0 -14Q-18 -10 -35 0Z" fill="${hair}"/><path d="M-32 0Q-42 28 -32 54L-23 48L-25 10M32 0Q42 28 32 54L23 48L25 10" fill="${hair}"/>`,
-   `<path d="M-35 3Q-39 -40 0 -42Q38 -39 36 5Q15 -17 -4 -17Q-18 -9 -35 3Z" fill="${hair}"/><path d="M-34 0Q-46 32 -30 61L-20 53L-25 10M34 0Q46 32 30 61L20 53L25 10" fill="${hair}"/>`
+ const styles = [
+  `<path d="M-35 8Q-42 -34 -5 -40Q32 -42 37 -5L31 26L34 66Q18 78 12 58L17 13Q0 4 -15 13L-23 62Q-40 69 -38 43Z" fill="${hair}"/><path d="M-34 -7Q-16 -29 4 -26Q24 -24 35 -5Q12 -14 -3 -8Q-20 0 -34 -7Z" fill="${hair}"/>`,
+  `<path d="M-36 7Q-42 -36 0 -41Q40 -35 36 8L29 58Q16 73 10 53L15 12Q0 2 -16 12L-13 58Q-29 71 -36 52Z" fill="${hair}"/><path d="M-35 -8Q-20 -31 1 -28Q22 -26 35 -7Q14 -14 -1 -8Q-18 -1 -35 -8Z" fill="${hair}"/>`,
+  `<path d="M-36 5Q-40 -38 0 -41Q40 -38 36 5L27 54Q15 69 9 51L14 10Q0 2 -14 10L-25 54Q-38 66 -36 42Z" fill="${hair}"/><path d="M-35 -8Q-19 -30 0 -28Q20 -29 35 -8Q14 -14 0 -9Q-18 -2 -35 -8Z" fill="${hair}"/>`,
+  `<path d="M-36 8Q-42 -35 -4 -40Q34 -40 37 -4L30 60Q15 75 9 55L15 12Q-1 3 -17 13L-24 61Q-40 68 -38 43Z" fill="${hair}"/><path d="M-35 -7Q-17 -30 5 -27Q25 -24 35 -4Q13 -13 -2 -8Q-20 0 -35 -7Z" fill="${hair}"/>`
  ][style%4];
  return `<g transform="translate(${x} ${y}) scale(${scale})">
-   <path d="M-38 54Q-52 76 -47 145H47Q52 76 38 54Q0 35 -38 54Z" fill="${color}" stroke="#594b49" stroke-width="2"/>
-   <path d="M-12 48L0 70L12 48" fill="#f8f2e9" stroke="#cfc4b8" stroke-width="1.5"/>
-   <path d="M-8 38H8V57Q0 65 -8 57Z" fill="${skin}"/>
-   <ellipse cy="1" rx="32" ry="39" fill="${skin}" stroke="#8d6250" stroke-width="1"/>
-   ${fringe}
-   <path d="M-20 -5Q-14 -10 -7 -5M7 -5Q14 -10 20 -5" fill="none" stroke="${hair}" stroke-width="2.6" stroke-linecap="round"/>
-   <ellipse cx="-13" cy="3" rx="3.2" ry="4.2" fill="#392d29"/><ellipse cx="13" cy="3" rx="3.2" ry="4.2" fill="#392d29"/>
-   <circle cx="-14" cy="2" r="1" fill="#fff"/><circle cx="12" cy="2" r="1" fill="#fff"/>
-   <path d="M0 7Q-3 15 1 16" fill="none" stroke="#bd856c" stroke-width="1.6" stroke-linecap="round"/>
-   <path d="M-8 23Q0 31 9 22" fill="none" stroke="#984f4b" stroke-width="2.8" stroke-linecap="round"/>
-   <ellipse cx="-22" cy="15" rx="6" ry="3.5" fill="#d98278" opacity=".28"/><ellipse cx="22" cy="15" rx="6" ry="3.5" fill="#d98278" opacity=".28"/>
-   <circle cx="-31" cy="9" r="2" fill="#d6b16d"/><circle cx="31" cy="9" r="2" fill="#d6b16d"/>
+  <path d="M-42 78Q-49 105 -44 165H44Q49 105 42 78Q22 64 0 65Q-22 64 -42 78Z" fill="${color}" stroke="#57483e" stroke-width="2"/>
+  <path d="M-13 69L0 91L13 69" fill="#fffdf7" stroke="#bdb6ae" stroke-width="1.5"/>
+  <path d="M-9 54H9V76Q0 84 -9 76Z" fill="${skin}"/>
+  <ellipse cx="0" cy="17" rx="43" ry="49" fill="${hair}"/><ellipse cx="0" cy="20" rx="34" ry="41" fill="${skin}"/>
+  ${styles}
+  <path d="M-20 -1Q-13 -7 -6 -1M7 -1Q14 -7 21 -1" fill="none" stroke="#4c342c" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="-12" cy="5" rx="3.5" ry="4.5" fill="#392d29"/><ellipse cx="13" cy="5" rx="3.5" ry="4.5" fill="#392d29"/>
+  <path d="M0 10Q-3 18 1 20" fill="none" stroke="#bd856c" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M-9 28Q0 36 10 28" fill="none" stroke="#9c5148" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="-22" cy="20" rx="7" ry="4" fill="#d98278" opacity=".28"/><ellipse cx="22" cy="20" rx="7" ry="4" fill="#d98278" opacity=".28"/>
  </g>`;
 }
 function doctorPerson(x,y,scale=1) {
  return `<g transform="translate(${x} ${y}) scale(${scale})">
-   <!-- shoulders and coat -->
-   <path d="M-65 83Q-76 110 -72 190H72Q76 110 65 83Q39 65 20 65L0 91L-20 65Q-42 66 -65 83Z" fill="#fffefa" stroke="#b8b2a9" stroke-width="2.4"/>
-   <path d="M-20 67L0 95L20 67L12 190H-12Z" fill="#e9e6df" stroke="#c9c2b8" stroke-width="1.5"/>
-   <path d="M-20 68L0 94L-13 110L-30 78M20 68L0 94L13 110L30 78" fill="#fff" stroke="#c9c2b8" stroke-width="1.5"/>
-   <!-- neck --> <path d="M-13 49H13V77Q0 91 -13 77Z" fill="#d99f7d"/>
-   <!-- hijab outer silhouette -->
-   <path d="M-48 12Q-54 -54 0 -62Q54 -54 48 12L57 76Q43 103 0 111Q-43 103 -57 76Z" fill="#74836b" stroke="#53634e" stroke-width="2.5"/>
-   <!-- face -->
-   <path d="M-29 -1Q-31 -39 0 -43Q31 -39 29 -1L25 28Q17 52 0 55Q-17 52 -25 28Z" fill="#e8b18e" stroke="#b98268" stroke-width="1.2"/>
-   <path d="M-30 -6Q-35 -42 0 -49Q35 -42 30 -6L22 -19Q0 -7 -22 -19Z" fill="#74836b"/>
-   <path d="M-20 4Q-14 -1 -8 4M8 4Q14 -1 20 4" fill="none" stroke="#5b4035" stroke-width="2.7" stroke-linecap="round"/>
-   <ellipse cx="-13" cy="11" rx="3.2" ry="4" fill="#3b302b"/><ellipse cx="13" cy="11" rx="3.2" ry="4" fill="#3b302b"/>
-   <circle cx="-14" cy="10" r="1" fill="#fff"/><circle cx="12" cy="10" r="1" fill="#fff"/>
-   <path d="M0 15Q-3 23 1 24" fill="none" stroke="#bd856c" stroke-width="1.5"/>
-   <path d="M-8 34Q0 42 9 33" fill="none" stroke="#984f4b" stroke-width="2.8" stroke-linecap="round"/>
-   <ellipse cx="-22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/><ellipse cx="22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/>
-   <!-- stethoscope -->
-   <path d="M-22 92V111Q-22 131 0 131Q22 131 22 111V92" fill="none" stroke="#66777a" stroke-width="3.2" stroke-linecap="round"/>
-   <path d="M0 131V145" stroke="#66777a" stroke-width="3.2"/><circle cx="0" cy="150" r="7" fill="#b9c4c2" stroke="#66777a" stroke-width="2"/>
-   <!-- name badge --> <rect x="34" y="104" width="19" height="25" rx="3" fill="#e8eee4" stroke="#9aaa92"/><path d="M39 111h9M39 117h9" stroke="#80927a" stroke-width="1.5"/>
+  <path d="M-65 83Q-76 110 -72 190H72Q76 110 65 83Q39 65 20 65L0 91L-20 65Q-42 66 -65 83Z" fill="#fffefa" stroke="#b8b2a9" stroke-width="2.4"/>
+  <path d="M-20 67L0 95L20 67L12 190H-12Z" fill="#f1eee8" stroke="#c9c2b8" stroke-width="1.5"/>
+  <path d="M-20 68L0 94L-13 110L-30 78M20 68L0 94L13 110L30 78" fill="#fff" stroke="#c9c2b8" stroke-width="1.5"/>
+  <path d="M-13 49H13V77Q0 88 -13 77Z" fill="#d99f7d"/>
+  <!-- loose, shoulder-length hair; no head covering -->
+  <path d="M-43 2Q-52 -48 -8 -58Q35 -63 46 -20Q52 12 42 73Q31 88 22 70L25 24L-25 24L-24 72Q-39 86 -48 67Z" fill="#5b4032" stroke="#493329" stroke-width="1.8"/>
+  <path d="M-29 -1Q-31 -39 0 -43Q31 -39 29 -1L25 28Q17 52 0 55Q-17 52 -25 28Z" fill="#e8b18e" stroke="#b98268" stroke-width="1.2"/>
+  <path d="M-30 -8Q-34 -42 0 -49Q32 -47 31 -10Q18 -22 5 -22Q-13 -13 -30 -8Z" fill="#5b4032"/>
+  <path d="M-20 4Q-14 -1 -8 4M8 4Q14 -1 20 4" fill="none" stroke="#5b4032" stroke-width="2.7" stroke-linecap="round"/>
+  <ellipse cx="-13" cy="11" rx="3.2" ry="4" fill="#3b302b"/><ellipse cx="13" cy="11" rx="3.2" ry="4" fill="#3b302b"/>
+  <path d="M0 15Q-3 23 1 24" fill="none" stroke="#bd856c" stroke-width="1.5"/>
+  <path d="M-8 34Q0 42 9 33" fill="none" stroke="#984f4b" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="-22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/><ellipse cx="22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/>
+  <path d="M-22 92V111Q-22 131 0 131Q22 131 22 111V92" fill="none" stroke="#66777a" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M0 131V145" stroke="#66777a" stroke-width="3.2"/><circle cx="0" cy="150" r="7" fill="#b9c4c2" stroke="#66777a" stroke-width="2"/>
+  <rect x="34" y="104" width="19" height="25" rx="3" fill="#e8eee4" stroke="#9aaa92"/><path d="M39 111h9M39 117h9" stroke="#80927a" stroke-width="1.5"/>
  </g>`;
 }
-
 function showScene(kind, extra={}) {
   let svg = "";
   if (kind === "start") {
@@ -125,7 +118,7 @@ function showScene(kind, extra={}) {
     caption.textContent = `Safe experience ${extra.day||1} of 3: Eman and her friends enjoy their drinks together.`;
   }
   if (kind === "consult") {
-    svg = `<svg viewBox="0 0 650 370" role="img" aria-label="Eman speaking with a friendly hijab-wearing doctor">${person({x:165,y:80,scale:1.02,mood:"happy",bag:false})}${doctorPerson(435,88,1.03)}<path d="M245 140Q286 112 325 133" stroke="#a9a092" stroke-width="2" fill="none" stroke-dasharray="4 5"/><text x="295" y="113" fill="#8a765d" font-size="15">?</text></svg>`;
+    svg = `<svg viewBox="0 0 650 370" role="img" aria-label="Eman speaking with a friendly doctor">${person({x:165,y:80,scale:1.02,mood:"happy",bag:false})}${doctorPerson(435,88,1.03)}<path d="M245 140Q286 112 325 133" stroke="#a9a092" stroke-width="2" fill="none" stroke-dasharray="4 5"/><text x="295" y="113" fill="#8a765d" font-size="15">?</text></svg>`;
     caption.textContent = "The doctor explains how Eman's brain connected the mocha with feeling ill.";
   }
   scene.innerHTML = svg;
