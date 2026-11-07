@@ -33,8 +33,6 @@ h1 { font:700 clamp(2.2rem,5vw,3.7rem)/1.1 "Playfair Display",serif; margin:8px 
 .tiny-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#8aab72; margin-right:5px; }
 .scene { flex:1; min-height:350px; display:flex; align-items:center; justify-content:center; position:relative; padding:8px 14px 0; }
 .scene svg { max-width:100%; max-height:380px; overflow:visible; }
-.scene-image { display:block; width:min(100%, 650px); height:360px; object-fit:contain; border-radius:12px; filter:drop-shadow(0 10px 18px rgba(70,48,30,.10)); animation:sceneIn .35s ease both; }
-@keyframes sceneIn { from { opacity:0; transform:translateY(7px) scale(.99); } to { opacity:1; transform:translateY(0) scale(1); } }
 .scene-caption { text-align:center; min-height:46px; padding:6px 20px 16px; font-size:.91rem; font-weight:600; color:#776657; position:relative; z-index:1; }
 .toast { position:absolute; top:55px; left:50%; transform:translate(-50%,-8px); opacity:0; pointer-events:none; background:#fff; border:1px solid #e8d9c5; border-radius:20px; padding:8px 14px; font-size:.75rem; font-weight:700; box-shadow:0 5px 18px #8c704522; transition:.25s; z-index:5; white-space:nowrap; }
 .toast.show { opacity:1; transform:translate(-50%,0); }
@@ -56,7 +54,7 @@ footer { text-align:center; color:#a08d72; font-size:.72rem; padding:18px 0 0; }
  .left-controls { grid-column:1; grid-row:2; } .right-controls { grid-column:2; grid-row:2; flex-wrap:wrap; }
  .action-button { width:70px; } .button-art { width:57px; height:57px; font-size:1.8rem; }
  .button-art svg { width:41px;height:41px; } .button-label { font-size:.66rem; }
- .scene { min-height:300px; } .scene svg { max-height:315px; } .scene-image { height:300px; width:100%; object-fit:contain; }
+ .scene { min-height:300px; } .scene svg { max-height:315px; }
  .campus-doodle { width:105px; opacity:.22; }
 }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; animation:none!important; } }

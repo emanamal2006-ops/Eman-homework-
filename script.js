@@ -7,7 +7,7 @@ const steps = [1,2,3,4].map(n => document.getElementById("step"+n));
 
 const state = {
   coffeeCount: 0, ill: false, conditioned: false, friendOpen: false,
-  groupOpen: false, consultOpen: false, safeDays: 0, extinct: false, friendExperienced: false,
+  groupOpen: false, consultOpen: false, safeDays: 0, extinct: false,
   reaction: "happy"
 };
 
@@ -50,32 +50,54 @@ function cupOnly(x,y,s=1) {
  return `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-17 -27h34l-5 56h-24z" fill="#fffaf0" stroke="#67442f" stroke-width="2.5"/><path d="M-15 -9h30l-4 33h-22z" fill="#956344"/><path d="M-5 -37l-5 13M5 -37l-3 13" stroke="#67442f" stroke-width="2.5" stroke-linecap="round"/><path d="M17 -20q16 -2 12 13q-2 8 -14 7" fill="none" stroke="#67442f" stroke-width="2.5"/></g>`;
 }
 function friendPerson(x,y,scale=0.8,color="#8c6e9e",style=0) {
-  const hairColors=["#49342d","#6a4935","#302a2a","#805b43"];
-  const skins=["#e8b795","#dca27f","#f0c6a3","#c98f70"];
-  const hair=hairColors[style%4], skin=skins[style%4];
-  const hairstyles=[
-    `<path d="M-34 8Q-45 -39 0 -42Q43 -39 35 10L34 53Q24 69 16 55L18 9Q0 -8 -21 8L-19 55Q-30 68 -37 48Z" fill="${hair}"/><path d="M-25 -18Q-12 -39 7 -31Q-5 -16 -24 -7Z" fill="#a47b5e" opacity=".5"/>`,
-    `<path d="M-36 7Q-44 -39 0 -41Q44 -39 36 8L31 55Q23 67 16 54L18 9Q0 -7 -22 8L-20 55Q-31 67 -37 48Z" fill="${hair}"/><path d="M-35 -15Q-12 -48 18 -29Q7 -12 -8 -9Q-22 -7 -35 2Z" fill="${hair}"/>`,
-    `<path d="M-35 7Q-42 -40 0 -42Q42 -40 35 8L30 53Q23 67 15 54L18 9Q0 -9 -21 8L-19 54Q-30 67 -36 48Z" fill="${hair}"/><path d="M-25 -22Q0 -39 25 -20" fill="none" stroke="#9a7255" stroke-width="5"/>`,
-    `<path d="M-36 8Q-43 -39 0 -41Q43 -39 36 8L33 55Q24 68 16 54L18 8Q0 -8 -22 8L-20 55Q-31 67 -37 48Z" fill="${hair}"/><path d="M-34 -3Q-25 -29 -5 -28Q8 -27 16 -17" fill="none" stroke="#b18a69" stroke-width="4"/>`
-  ];
-  const face = `<ellipse cy="5" rx="28" ry="34" fill="${skin}" stroke="#765344" stroke-width="1.35"/>
-    <path d="M-20 -5Q-13 -11 -5 -6M6 -6Q14 -11 21 -4" fill="none" stroke="#51392f" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M-18 1Q-12 -3 -7 1M7 1Q13 -3 18 1" fill="none" stroke="#6a493b" stroke-width="1.5" stroke-linecap="round"/>
-    <ellipse cx="-12" cy="4" rx="3.5" ry="4.5" fill="#fff"/><ellipse cx="12" cy="4" rx="3.5" ry="4.5" fill="#fff"/>
-    <circle cx="-12" cy="4" r="2.2" fill="#49342c"/><circle cx="12" cy="4" r="2.2" fill="#49342c"/>
-    <path d="M0 8Q-3 14 1 15" fill="none" stroke="#b77c68" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M-9 22Q0 31 10 21" fill="none" stroke="#98554a" stroke-width="2.7" stroke-linecap="round"/>
-    <ellipse cx="-21" cy="15" rx="5.5" ry="3.5" fill="#d98e82" opacity=".48"/><ellipse cx="21" cy="15" rx="5.5" ry="3.5" fill="#d98e82" opacity=".48"/>`;
-  return `<g transform="translate(${x} ${y}) scale(${scale})">
-    <path d="M-36 54Q-48 76 -43 137H43Q48 76 36 54Q0 35 -36 54Z" fill="${color}" stroke="#594b49" stroke-width="2"/>
-    <path d="M-11 48L0 64L11 48" fill="#fffaf2" stroke="#d8cbbb" stroke-width="1.3"/>
-    ${hairstyles[style%4]}${face}
-    <path d="M-31 19Q-36 23 -33 29M31 19Q36 23 33 29" fill="none" stroke="${hair}" stroke-width="3"/>
-    <circle cx="-31" cy="19" r="3.5" fill="#d3ad69"/><circle cx="31" cy="19" r="3.5" fill="#d3ad69"/>
-    <path d="M-23 60Q-18 75 -11 79M23 60Q18 75 11 79" stroke="#ffffff" stroke-opacity=".35" stroke-width="2" fill="none"/>
-  </g>`;
+ const hair = ["#49352e","#674331","#302b2a","#76513b"][style%4];
+ const skin = ["#e8b18d","#d99b78","#f0c5a1","#c98768"][style%4];
+ const fringe = [
+   `<path d="M-34 5Q-42 -39 -4 -42Q34 -42 37 -5Q22 -20 9 -21Q-8 -7 -31 -11Z" fill="${hair}"/><path d="M-34 0Q-44 34 -30 58L-22 50L-25 13M34 0Q43 32 30 58L22 50L25 13" fill="${hair}"/>`,
+   `<path d="M-35 2Q-37 -40 0 -41Q38 -38 35 5L24 -11Q4 -18 -3 -5Q-17 -16 -28 -8Z" fill="${hair}"/><path d="M-33 0Q-47 36 -27 65L-18 56L-24 12M33 0Q45 36 27 65L18 56L24 12" fill="${hair}"/>`,
+   `<path d="M-35 0Q-42 -44 0 -42Q42 -44 35 4Q22 -10 0 -14Q-18 -10 -35 0Z" fill="${hair}"/><path d="M-32 0Q-42 28 -32 54L-23 48L-25 10M32 0Q42 28 32 54L23 48L25 10" fill="${hair}"/>`,
+   `<path d="M-35 3Q-39 -40 0 -42Q38 -39 36 5Q15 -17 -4 -17Q-18 -9 -35 3Z" fill="${hair}"/><path d="M-34 0Q-46 32 -30 61L-20 53L-25 10M34 0Q46 32 30 61L20 53L25 10" fill="${hair}"/>`
+ ][style%4];
+ return `<g transform="translate(${x} ${y}) scale(${scale})">
+   <path d="M-38 54Q-52 76 -47 145H47Q52 76 38 54Q0 35 -38 54Z" fill="${color}" stroke="#594b49" stroke-width="2"/>
+   <path d="M-12 48L0 70L12 48" fill="#f8f2e9" stroke="#cfc4b8" stroke-width="1.5"/>
+   <path d="M-8 38H8V57Q0 65 -8 57Z" fill="${skin}"/>
+   <ellipse cy="1" rx="32" ry="39" fill="${skin}" stroke="#8d6250" stroke-width="1"/>
+   ${fringe}
+   <path d="M-20 -5Q-14 -10 -7 -5M7 -5Q14 -10 20 -5" fill="none" stroke="${hair}" stroke-width="2.6" stroke-linecap="round"/>
+   <ellipse cx="-13" cy="3" rx="3.2" ry="4.2" fill="#392d29"/><ellipse cx="13" cy="3" rx="3.2" ry="4.2" fill="#392d29"/>
+   <circle cx="-14" cy="2" r="1" fill="#fff"/><circle cx="12" cy="2" r="1" fill="#fff"/>
+   <path d="M0 7Q-3 15 1 16" fill="none" stroke="#bd856c" stroke-width="1.6" stroke-linecap="round"/>
+   <path d="M-8 23Q0 31 9 22" fill="none" stroke="#984f4b" stroke-width="2.8" stroke-linecap="round"/>
+   <ellipse cx="-22" cy="15" rx="6" ry="3.5" fill="#d98278" opacity=".28"/><ellipse cx="22" cy="15" rx="6" ry="3.5" fill="#d98278" opacity=".28"/>
+   <circle cx="-31" cy="9" r="2" fill="#d6b16d"/><circle cx="31" cy="9" r="2" fill="#d6b16d"/>
+ </g>`;
 }
+function doctorPerson(x,y,scale=1) {
+ return `<g transform="translate(${x} ${y}) scale(${scale})">
+   <!-- shoulders and coat -->
+   <path d="M-65 83Q-76 110 -72 190H72Q76 110 65 83Q39 65 20 65L0 91L-20 65Q-42 66 -65 83Z" fill="#fffefa" stroke="#b8b2a9" stroke-width="2.4"/>
+   <path d="M-20 67L0 95L20 67L12 190H-12Z" fill="#e9e6df" stroke="#c9c2b8" stroke-width="1.5"/>
+   <path d="M-20 68L0 94L-13 110L-30 78M20 68L0 94L13 110L30 78" fill="#fff" stroke="#c9c2b8" stroke-width="1.5"/>
+   <!-- neck --> <path d="M-13 49H13V77Q0 91 -13 77Z" fill="#d99f7d"/>
+   <!-- hijab outer silhouette -->
+   <path d="M-48 12Q-54 -54 0 -62Q54 -54 48 12L57 76Q43 103 0 111Q-43 103 -57 76Z" fill="#74836b" stroke="#53634e" stroke-width="2.5"/>
+   <!-- face -->
+   <path d="M-29 -1Q-31 -39 0 -43Q31 -39 29 -1L25 28Q17 52 0 55Q-17 52 -25 28Z" fill="#e8b18e" stroke="#b98268" stroke-width="1.2"/>
+   <path d="M-30 -6Q-35 -42 0 -49Q35 -42 30 -6L22 -19Q0 -7 -22 -19Z" fill="#74836b"/>
+   <path d="M-20 4Q-14 -1 -8 4M8 4Q14 -1 20 4" fill="none" stroke="#5b4035" stroke-width="2.7" stroke-linecap="round"/>
+   <ellipse cx="-13" cy="11" rx="3.2" ry="4" fill="#3b302b"/><ellipse cx="13" cy="11" rx="3.2" ry="4" fill="#3b302b"/>
+   <circle cx="-14" cy="10" r="1" fill="#fff"/><circle cx="12" cy="10" r="1" fill="#fff"/>
+   <path d="M0 15Q-3 23 1 24" fill="none" stroke="#bd856c" stroke-width="1.5"/>
+   <path d="M-8 34Q0 42 9 33" fill="none" stroke="#984f4b" stroke-width="2.8" stroke-linecap="round"/>
+   <ellipse cx="-22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/><ellipse cx="22" cy="26" rx="6" ry="3.5" fill="#d98278" opacity=".3"/>
+   <!-- stethoscope -->
+   <path d="M-22 92V111Q-22 131 0 131Q22 131 22 111V92" fill="none" stroke="#66777a" stroke-width="3.2" stroke-linecap="round"/>
+   <path d="M0 131V145" stroke="#66777a" stroke-width="3.2"/><circle cx="0" cy="150" r="7" fill="#b9c4c2" stroke="#66777a" stroke-width="2"/>
+   <!-- name badge --> <rect x="34" y="104" width="19" height="25" rx="3" fill="#e8eee4" stroke="#9aaa92"/><path d="M39 111h9M39 117h9" stroke="#80927a" stroke-width="1.5"/>
+ </g>`;
+}
+
 function showScene(kind, extra={}) {
   let svg = "";
   if (kind === "start") {
@@ -95,44 +117,16 @@ function showScene(kind, extra={}) {
     caption.textContent = "The smell and taste now bring back the feeling of being sick.";
   }
   if (kind === "friend") {
-    svg = `<svg viewBox="0 0 520 370" role="img" aria-label="Eman sitting with her female friend">${person({x:195,y:85,scale:1.12,mood:extra.mood||"nausea",cup:false,cookie:true})}${friendPerson(340,118,.94,"#9277a8",1)}${cupOnly(366,232,.75)}<path d="M110 315h300" stroke="#d8c9aa" stroke-width="3" stroke-linecap="round"/></svg>`;
+    svg = `<svg viewBox="0 0 520 370" role="img" aria-label="Eman sitting with one friend">${person({x:195,y:85,scale:1.12,mood:extra.mood||"nausea",cup:false,cookie:true})}${friendPerson(340,118,.94,"#9277a8")}${cupOnly(366,232,.75)}<path d="M110 315h300" stroke="#d8c9aa" stroke-width="3" stroke-linecap="round"/></svg>`;
     caption.textContent = "A friend joins Eman. She feels a little uncomfortable, but not as sick.";
   }
   if (kind === "group") {
-    svg = `<svg viewBox="0 0 600 370" role="img" aria-label="Eman laughing with four female friends, all holding iced mocha drinks"><text x="100" y="70" fill="#c77b92" font-size="23" font-weight="700">haha!</text><text x="440" y="92" fill="#c77b92" font-size="22" font-weight="700">LOL!</text>${friendPerson(105,135,.68,"#8d9eae",0)}${friendPerson(205,142,.68,"#b18a70",1)}${person({x:300,y:95,scale:1.0,mood:"happy",cup:true,bag:false})}${friendPerson(405,142,.68,"#8b9c7a",2)}${friendPerson(500,135,.68,"#ad87a0",3)}${cupOnly(105,245,.5)}${cupOnly(205,248,.5)}${cupOnly(405,248,.5)}${cupOnly(500,245,.5)}<text x="255" y="42" fill="#c77b92" font-size="19" font-weight="700">Day ${extra.day||1}</text></svg>`;
+    svg = `<svg viewBox="0 0 600 370" role="img" aria-label="Eman laughing with four friends, all holding iced mocha drinks"><text x="100" y="70" fill="#c77b92" font-size="23" font-weight="700">haha!</text><text x="440" y="92" fill="#c77b92" font-size="22" font-weight="700">LOL!</text>${friendPerson(105,135,.68,"#8d9eae",0)}${friendPerson(205,142,.68,"#b18a70",1)}${person({x:300,y:95,scale:1.0,mood:"happy",cup:true,bag:false})}${friendPerson(405,142,.68,"#8b9c7a",2)}${friendPerson(500,135,.68,"#ad87a0",3)}${cupOnly(105,245,.5)}${cupOnly(205,248,.5)}${cupOnly(405,248,.5)}${cupOnly(500,245,.5)}<text x="255" y="42" fill="#c77b92" font-size="19" font-weight="700">Day ${extra.day||1}</text></svg>`;
     caption.textContent = `Safe experience ${extra.day||1} of 3: Eman and her friends enjoy their drinks together.`;
   }
   if (kind === "consult") {
-    svg = `<svg viewBox="0 0 650 370" role="img" aria-label="Eman speaking with a friendly hijab-wearing doctor">
-      ${person({x:160,y:80,scale:1.02,mood:"happy",bag:false})}
-      <g transform="translate(425 78)">
-        <!-- tailored white coat and blouse -->
-        <path d="M-64 91Q-82 112 -76 195H76Q82 112 64 91Q37 70 0 72Q-37 70 -64 91Z" fill="#fffefa" stroke="#aaa49a" stroke-width="2.1"/>
-        <path d="M-29 82L0 119L29 82L17 195H-17Z" fill="#e7ece8" stroke="#c3ccc5" stroke-width="1.4"/>
-        <path d="M-29 83L-8 113L-24 132L-44 94M29 83L8 113L24 132L44 94" fill="#fff" stroke="#d2d0c9" stroke-width="1.5"/>
-        <!-- neck -->
-        <rect x="-12" y="61" width="24" height="27" rx="8" fill="#dca987"/>
-        <!-- hijab silhouette behind face -->
-        <path d="M-42 21Q-53 -43 -4 -54Q45 -52 43 20L42 83Q30 112 0 119Q-30 111 -42 83Z" fill="#71877f" stroke="#536b63" stroke-width="2.2"/>
-        <!-- face framed naturally by scarf -->
-        <path d="M-29 10Q-31 -30 0 -34Q31 -30 29 10Q27 44 0 57Q-27 44 -29 10Z" fill="#e8b895" stroke="#9b715c" stroke-width="1.3"/>
-        <path d="M-30 7Q-35 -23 -14 -40Q0 -48 17 -37Q30 -26 30 5Q20 -10 12 -19Q-3 -6 -26 -9Z" fill="#71877f"/>
-        <path d="M-19 5Q-12 0 -5 5M6 5Q13 0 20 5" fill="none" stroke="#5a4035" stroke-width="2.4" stroke-linecap="round"/>
-        <ellipse cx="-12" cy="12" rx="3.5" ry="4.3" fill="#fff"/><ellipse cx="12" cy="12" rx="3.5" ry="4.3" fill="#fff"/>
-        <circle cx="-12" cy="12" r="2.1" fill="#49342c"/><circle cx="12" cy="12" r="2.1" fill="#49342c"/>
-        <path d="M0 17Q-3 23 1 24" fill="none" stroke="#b77c68" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M-9 34Q0 42 10 34" fill="none" stroke="#98554a" stroke-width="2.5" stroke-linecap="round"/>
-        <ellipse cx="-22" cy="25" rx="5" ry="3" fill="#d98e82" opacity=".4"/><ellipse cx="22" cy="25" rx="5" ry="3" fill="#d98e82" opacity=".4"/>
-        <!-- scarf drape, stethoscope and ID -->
-        <path d="M-37 48Q-42 84 -27 112L-10 129L-18 91L-27 55M37 48Q42 84 27 112L10 129L18 91L27 55" fill="#71877f" stroke="#536b63" stroke-width="1.6"/>
-        <path d="M-29 94Q-35 137 -11 142Q0 145 11 142Q35 137 29 94" fill="none" stroke="#718b89" stroke-width="3.2" stroke-linecap="round"/>
-        <circle cx="0" cy="145" r="7" fill="#d5d9d5" stroke="#718b89" stroke-width="2.3"/>
-        <rect x="42" y="112" width="17" height="24" rx="3" fill="#e9eee9" stroke="#9aa69d"/>
-        <path d="M50.5 117v13M44 123.5h13" stroke="#7d9789" stroke-width="1.8" stroke-linecap="round"/>
-      </g>
-      <path d="M240 135Q275 108 310 130" stroke="#a9a092" stroke-width="2" fill="none" stroke-dasharray="4 5"/><text x="290" y="115" fill="#8a765d" font-size="15">?</text>
-    </svg>`;
-    caption.textContent = "The doctor explains what Eman is experiencing.";
+    svg = `<svg viewBox="0 0 650 370" role="img" aria-label="Eman speaking with a friendly hijab-wearing doctor">${person({x:165,y:80,scale:1.02,mood:"happy",bag:false})}${doctorPerson(435,88,1.03)}<path d="M245 140Q286 112 325 133" stroke="#a9a092" stroke-width="2" fill="none" stroke-dasharray="4 5"/><text x="295" y="113" fill="#8a765d" font-size="15">?</text></svg>`;
+    caption.textContent = "The doctor explains how Eman's brain connected the mocha with feeling ill.";
   }
   scene.innerHTML = svg;
 }
@@ -153,8 +147,8 @@ function coffee() {
     dayCount.textContent = `Day ${state.coffeeCount}`;
   } else if (state.extinct) {
     showScene("happy"); caption.textContent="Eman enjoys her mocha again. The old reaction has faded."; notify("A comfortable experience");
-  } else if (state.friendExperienced || state.friendOpen) {
-    showScene("friend"); caption.textContent="Eman feels a little uneasy, but the reaction is milder than before."; notify("A milder reaction");
+  } else if (state.friendOpen) {
+    showScene("friend",{mood:"nausea"}); caption.textContent="Eman feels a little uneasy, but she stays with her friend."; notify("A milder reaction");
   } else {
     showScene("nausea"); notify("Conditioned response: nausea");
     setTimeout(()=>{ if (!state.consultOpen && !state.friendOpen && !state.groupOpen) { showScene("start"); } },5000);
@@ -176,7 +170,6 @@ function consult() {
 }
 function friend() {
   state.friendOpen=!state.friendOpen; state.groupOpen=false; state.consultOpen=false;
-  if(state.friendOpen) state.friendExperienced=true;
   if(state.friendOpen) showScene("friend",{mood:state.conditioned&&!state.extinct?"nausea":"happy"});
   else showScene("start");
 }
@@ -193,7 +186,7 @@ function group() {
   setProgress();
 }
 function reset() {
-  Object.assign(state,{coffeeCount:0,ill:false,conditioned:false,friendOpen:false,groupOpen:false,consultOpen:false,safeDays:0,extinct:false,friendExperienced:false,reaction:"happy"});
+  Object.assign(state,{coffeeCount:0,ill:false,conditioned:false,friendOpen:false,groupOpen:false,consultOpen:false,safeDays:0,extinct:false,reaction:"happy"});
   dayCount.textContent="Day 1"; showScene("start"); setProgress(); notify("Experiment restarted");
 }
 document.getElementById("coffeeBtn").addEventListener("click",coffee);
